@@ -7,9 +7,16 @@ send_msg() {
   -d text="$1" -d parse_mode=${PARSE_MODE}
 }
 
+if [ $TRAVIS_TEST_RESULT -ne 0 ]; then
+  build_status="failed"
+else
+  build_status="succeeded"
+fi
+
 send_msg "
 -------------------------------------
 UltraTon-BE
+Build ${build_status}!
 Repository:  https://github.com/${TRAVIS_REPO_SLUG}
 Heroku:  ${HEROKU_URL}
 
