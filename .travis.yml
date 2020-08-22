@@ -10,5 +10,4 @@ deploy:
   on: master
 
 after_deploy:
-  - curl -X POST https://api.telegram.org/bot$TELEGRAM_TOKEN/sendMessage -d chat_id=$TELEGRAM_CHAT_ID
-    -d "text=Backend Deployed https://ultraton-back.herokuapp.com/"
+  - bash scripts/telegram_notification.sh
