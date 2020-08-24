@@ -2,12 +2,12 @@ language: node_js
 node_js:
   - stable
 
-after_script:
-  - bash scripts/telegram_notification.sh
-
 deploy:
   provider: heroku
   app: ultraton-back
   api_key:
     secure: hLRVl1r+r5sv4P8uWLY9e4nIVM3SX2a8si9cLL5RSF01L894VOhBdT+UpBw2EKi5QqH4LYprrA4LcsYrc+IdYf18fBKIFIc4SjzG5Use18Iju7UoIGPsLkLSQikhnrlYg9ZfUcM7c9ajU5p1dCy48SqdpqPxrIjXIPdwtPGtOzDGZd8gWZ0DlqQa1npp9ouiGiHcSHv4DlQoUT7ic0SsaB3mMs1OP9YpM2urAhJYgLSX283iihYeUwiLbCw05FojrjcRk94saNh3w/Wrrt7dIHD1KPw+dYDwenlStSoohp4UhbcGLYuHeKfm1yFZjfBCORQnSskGcfoO8GTvCZ5GCqkyomI2SMXurUcJVqQ2zIkHqmTX3Wm6sqITGDzwlXKhjERa6uTS7w12Yd3HaPAEqTrRTm014FQW2DYOBU/CWPzNlCeL00lkfN2CU3qFmsJH8f1UjkZKCpO2YFQzXJFDjZi+dr+0HT2cZ67D/MD6dKBZPzIa9XdOkcWG2K0C5HytnQnsI0ZOrNG0bNZ84vRCiylCr08DGmRVcpWtb8rMo+dd0WVlLN47o7rYhgwQuxTilgTdwfLh8hHcxlG1eZmtZLpIdEOuUXalS9CTwy8ZSfQUqkmU+5Cq2SC+ET01bXPtO37mkvhUeVXMFn1bZ2HVAREwW/FiSkhPNNFRzIXmftI=
   on: master
+
+notifications:
+  webhooks: https://fathomless-fjord-24024.herokuapp.com/notify
