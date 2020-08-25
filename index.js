@@ -7,7 +7,6 @@ const express = require('express'),
 const app = express();
 const log4js = require('log4js');
 
-const { MONGO_URI } = config.get('DB');
 const { PORT } = config.get('SERVER');
 const { connectDB } = require('./utils');
 
