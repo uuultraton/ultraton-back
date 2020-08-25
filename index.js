@@ -7,7 +7,6 @@ const express = require('express'),
 const app = express();
 const log4js = require('log4js');
 
-const { MONGO_URI } = config.get('DB');
 const { PORT } = config.get('SERVER');
 const { connectDB } = require('./utils');
 
@@ -49,7 +48,7 @@ app.use(function (req, res, next) {
 // development error handler
 // will print stacktrace
 if (!isProduction) {
-  app.use(function (err, req, res, next) {
+  app.use(function (err, req, res) {
     console.log(err.stack);
 
     res.status(err.status || 500);
