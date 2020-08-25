@@ -15,6 +15,10 @@ const isProduction = process.env.PRODUCTION || config.get('isProduction');
 const dbConnection = connectDB();
 const logger = log4js.getLogger();
 
+const authMiddleware = require('./middlewares/auth.middleware');
+
+const authRouter = require('./routes/auth.routes');
+
 logger.level = config.get('LOGGER_LVL');
 
 app.use(cors());
@@ -34,45 +38,9 @@ if (!isProduction) {
   mongoose.set('debug', true);
 }
 
-app.use(require('./routes'));
+app.use('/api/auth', authRouter);
 
-/// catch 404 and forward to error handler
-app.use(function (req, res, next) {
-  const err = new Error('Not Found');
-  err.status = 404;
-  next(err);
-});
-
-/// error handlers
-
-// development error handler
-// will print stacktrace
-if (!isProduction) {
-  app.use(function (err, req, res) {
-    console.log(err.stack);
-
-    res.status(err.status || 500);
-
-    res.json({
-      errors: {
-        message: err.message,
-        error: err,
-      },
-    });
-  });
-}
-
-// production error handler
-// no stacktraces leaked to user
-app.use(function (err, req, res) {
-  res.status(err.status || 500);
-  res.json({
-    errors: {
-      message: err.message,
-      error: {},
-    },
-  });
-});
+app.use(authMiddleware);
 
 // start server
 app.listen(process.env.PORT || PORT, () => {
