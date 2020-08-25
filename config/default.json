@@ -1,0 +1,18 @@
+{
+  "SERVER": {
+    "PORT": 3000
+  },
+  "isProduction": false,
+  "LOGGER_LVL": "your logger lvl",
+  "DB": {
+    "MONGO_URI": "your mongo db url"
+  },
+  "SALT_ROUNDS": "number of your salst round",
+  "JWT_SECRET": "some secret key",
+  "AWS": {
+    "accessKeyId": "your aws secret key",
+    "secretAccessKey": "your aws access key",
+    "BUCKET_NAME": "your aws bucket name",
+    "REGION": "your aws region"
+  }
+}
