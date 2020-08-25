@@ -21,8 +21,8 @@ module.exports = async (req, res, next) => {
     } else {
       return errorHandler(res, LOGS.ERROR.USER_NOT_EXIST);
     }
-  } catch (err) {
-    res.status(500).json({ error: err.message });
+  } catch (error) {
+    return errorHandler(res, error.message);
   }
 
   next();
