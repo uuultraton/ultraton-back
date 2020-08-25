@@ -6,7 +6,7 @@ module.exports = (schema, property) =>
       const validated = await schema.validate(req[property]);
 
       if (validated.error) {
-        return errorHandler(res, validated.error.details);
+        return errorHandler(res, validated.error.message);
       }
     } catch (error) {
       return errorHandler(error.message);

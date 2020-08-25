@@ -10,7 +10,7 @@ module.exports = {
 
     password: Joi.string()
       .min(3)
-      .pattern(new RegExp('^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9]{8,}$'))
+      .pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9]{8,}$/)
       .required(),
   }),
 
@@ -19,7 +19,7 @@ module.exports = {
 
     password: Joi.string()
       .min(3)
-      .pattern(new RegExp('^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9]{8,}$'))
+      .pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9]{8,}$/)
       .required(),
   }),
 };
