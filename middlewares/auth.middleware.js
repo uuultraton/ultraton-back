@@ -6,7 +6,7 @@ const { User } = require('../models');
 const { LOGS } = require('../constants');
 const { errorHandler } = require('../utils');
 
-module.exports = async (req, res, next) => {
+module.exports = async function (req, res, next) {
   try {
     const jwt_token = req.header('authorization');
 
