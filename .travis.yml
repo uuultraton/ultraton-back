@@ -1,12 +1,17 @@
 language: node_js
 node_js:
   - stable
+
 deploy:
   provider: heroku
   app: ultraton-back
   api_key:
     secure: W7phUiub1Kc5+iB/BJ3frg+X9jSi7r3rwaMV+fcTUXDpH+iTzm5Xw+BSWkVxgXYEWzGFaPUfy3FnNH3StXYZ3AmjqCF7EyfMElWn+iDkoAGFv5z5KyPO/K0Qvzw7VEAmA97vhBPQgLSxrLhDtQEyO7CkwST4HAk/UdKeGlemb+LWed2Nm9bRDVdBkXZu8TCTzmlLtmgnaMa9zlpsrybaW3wo+JSCCBKgU2JozCOaIo5t7YNfT0yd1wBgjA7SQIosqrWPTyzXXzTaHobliCJGAOtVXiOlzj+ucRF46putD87F0qV2coFFwuFcPlHPvXnh6veIKI7A8efi4WKHcR9UCrcOWn5Z3QsGwt7uy++wxwL/bI8usVYKa2rFs+SJYzklXIba80cPoSxMnTNFy2K/132awoYgDP75ic26kx9ZMiYg0Jab9mqcuJkmIq0g8WjfJp8sK9aeuetkjsDqiiRDWsaEJZvouJ7NBjHPXX/sMClGQTF/mF4x7bcf8r8OgQCgMqrRSxLW41xXQkfZKMNlz328aPMTK/DuuGATeZtQMSO/2Dch5VI4zrZ7s+V6up3b6kPbtbsKBEtj4NqX4gVNtOslrV0sBO+qaThrWWumHbBnyFb45ZNG0/Kh56KFXNVDWGv+NP1yZn1BgtvlJ8x+KLNWz/SknOcVLI9FBI3GAyo=
-  on:
-    branch: master
+  on: master
+
+branches:
+  only:
+    - master
+
 notifications:
   webhooks: https://fathomless-fjord-24024.herokuapp.com/notify
