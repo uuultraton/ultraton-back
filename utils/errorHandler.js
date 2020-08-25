@@ -14,7 +14,8 @@ const errorHandler = (
   return res.json({
     success: false,
     payload,
-    error: { status, message: errorMessage },
+    status,
+    message: errorMessage,
   });
 };
 module.exports = errorHandler;

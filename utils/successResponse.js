@@ -14,6 +14,7 @@ const successResponse = (
     success: true,
     payload,
     status,
+    message,
   });
 };
 

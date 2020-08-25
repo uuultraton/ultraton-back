@@ -50,8 +50,7 @@ const postLogin = async (req, res) => {
   }
 
   return successResponse(res, LOGS.SUCCESS.LOGIN, {
-    token: createToken(user._id),
-    userData: user,
+    jwt_token: createToken(user._id),
   });
 };
 

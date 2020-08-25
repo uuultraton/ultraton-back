@@ -16,7 +16,9 @@ const isProduction = process.env.PRODUCTION || config.get('isProduction');
 const dbConnection = connectDB();
 const logger = log4js.getLogger();
 
-const authRouter = require('./routes/auth');
+const authMiddleware = require('./middlewares/auth.middleware');
+
+const authRouter = require('./routes/auth.routes');
 
 logger.level = config.get('LOGGER_LVL');
 
@@ -38,6 +40,8 @@ if (!isProduction) {
 }
 
 app.use('/api/auth', authRouter);
+
+app.use(authMiddleware);
 
 // start server
 app.listen(process.env.PORT || PORT, () => {

@@ -1,10 +1,10 @@
 const STATUSES = {
   RESPONSE: {
     SUCCESS: {
-      DEFAULT: '200 OK',
+      DEFAULT: 200,
     },
     FAILED: {
-      DEFAULT: '400 Bad Request',
+      DEFAULT: 400,
     },
   },
 };
