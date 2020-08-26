@@ -15,15 +15,8 @@ const User = model(
       },
 
       skills: {
-        direction: { type: String, default: '' },
-        technologies: [
-          {
-            // ids
-            name: [String],
-            learnt: [String],
-            plannedToLearn: [String],
-          },
-        ],
+        learnt: [String],
+        plannedToLearn: [String],
       },
 
       logs: [
