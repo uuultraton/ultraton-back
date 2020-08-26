@@ -5,7 +5,7 @@ const { errorHandler, successResponse } = require('../utils');
 
 const getUser = async (req, res) => {
   try {
-    const user = await User.findOne({ _id: req.userId });
+    const user = await User.findOne({ _id: req.params.id });
 
     if (!user) return errorHandler(res, LOGS.ERROR.USER_NOT_EXIST);
 
@@ -16,6 +16,7 @@ const getUser = async (req, res) => {
 };
 
 const updateAvatar = async (req, res) => {
+  const { id } = req.params;
   const { file } = req.body;
 
   if (!file) return errorHandler(res, LOGS.ERROR.AVATAR_UPLOAD);
@@ -23,7 +24,7 @@ const updateAvatar = async (req, res) => {
   try {
     const updatedUser = await User.findOneAndUpdate(
       {
-        _id: req.userId,
+        _id: id,
       },
       {
         avatarBuffer: {
@@ -48,12 +49,13 @@ const updateAvatar = async (req, res) => {
 };
 
 const updateAbout = async (req, res) => {
+  const { id } = req.params;
   const { about } = req.body;
 
   try {
     const updatedUser = await User.findOneAndUpdate(
       {
-        _id: req.userId,
+        _id: id,
       },
       {
         profile: {

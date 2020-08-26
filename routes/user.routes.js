@@ -12,14 +12,14 @@ const {
   updateAbout,
 } = require('../controllers/user.controller');
 
-router.get('/getInfo', (req, res) => getUser(req, res));
+router.get('/:id', (req, res) => getUser(req, res));
 
-router.patch('/updateAbout', valid(userValid.aboutUpload), (req, res) =>
+router.patch('/:id/updateAbout', valid(userValid.aboutUpload), (req, res) =>
   updateAbout(req, res),
 );
 
 router.patch(
-  '/updateAvatar',
+  '/:id/updateAvatar',
   valid(userValid.avatarUpload),
   upload.single('avatar'),
   (req, res) => updateAvatar(req, res),

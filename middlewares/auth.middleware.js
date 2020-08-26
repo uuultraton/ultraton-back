@@ -16,9 +16,9 @@ module.exports = async function (req, res, next) {
 
     const foundUser = await User.findOne({ _id: userId });
 
-    if (foundUser) {
-      req.userId = userId;
-    } else {
+    if (!foundUser) {
+    //   req.userId = userId;
+    // } else {
       return errorHandler(res, LOGS.ERROR.USER_NOT_EXIST);
     }
   } catch (error) {

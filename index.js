@@ -43,7 +43,7 @@ app.use('/api/auth', authRouter);
 
 app.use(authMiddleware);
 
-app.use('/api/user', userRouter);
+app.use('/api/user/', userRouter);
 
 // start server
 app.listen(process.env.PORT || PORT, () => {
