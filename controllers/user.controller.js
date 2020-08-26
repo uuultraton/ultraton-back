@@ -4,8 +4,9 @@ const { LOGS, STATUSES } = require('../constants');
 const { errorHandler, successResponse } = require('../utils');
 
 const getUser = async (req, res) => {
+  const { id } = req.params;
   try {
-    const user = await User.findOne({ _id: req.params.id });
+    const user = await User.findOne({ _id: `${id}` });
 
     if (!user) return errorHandler(res, LOGS.ERROR.USER_NOT_EXIST);
 

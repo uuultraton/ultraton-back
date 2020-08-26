@@ -51,6 +51,7 @@ const postLogin = async (req, res) => {
 
   return successResponse(res, LOGS.SUCCESS.LOGIN, {
     jwt_token: createToken(user._id),
+    userId: user._id,
   });
 };
 
