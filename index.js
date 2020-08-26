@@ -18,6 +18,7 @@ const logger = log4js.getLogger();
 const authMiddleware = require('./middlewares/auth.middleware');
 
 const authRouter = require('./routes/auth.routes');
+const userRouter = require('./routes/user.routes');
 
 logger.level = config.get('LOGGER_LVL');
 
@@ -41,6 +42,8 @@ if (!isProduction) {
 app.use('/api/auth', authRouter);
 
 app.use(authMiddleware);
+
+app.use('/api/user', userRouter);
 
 // start server
 app.listen(process.env.PORT || PORT, () => {
