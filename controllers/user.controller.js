@@ -15,6 +15,57 @@ const getUser = async (req, res) => {
   }
 };
 
+const getSkills = async (req, res) => {
+  try {
+    const user = await User.findOne({ _id: req.params.id });
+
+    if (!user) return errorHandler(res, LOGS.ERROR.USER_NOT_EXIST);
+
+    return successResponse(res, STATUSES.RESPONSE.SUCCESS.DEFAULT, user.skills);
+  } catch (error) {
+    return errorHandler(res, error.message);
+  }
+};
+
+const updateSkills = async (req, res) => {
+  try {
+    const user = await User.findOne({ _id: req.params.id });
+
+    if (!user) return errorHandler(res, LOGS.ERROR.USER_NOT_EXIST);
+
+    const { learnt, plannedToLearn } = req.body;
+
+    if (!learnt || !plannedToLearn)
+      return errorHandler(res, LOGS.ERROR.DEFAULT);
+
+    const updatedUser = await User.findOneAndUpdate(
+      {
+        _id: id,
+      },
+      {
+        skills: {
+          learnt,
+          plannedToLearn,
+        },
+        $push: {
+          logs: {
+            message: 'skills updated',
+          },
+        },
+      },
+      { new: true },
+    );
+
+    return successResponse(
+      res,
+      STATUSES.RESPONSE.SUCCESS.DEFAULT,
+      updatedUser.skills,
+    );
+  } catch (error) {
+    return errorHandler(res, error.message);
+  }
+};
+
 const updateAvatar = async (req, res) => {
   const { id } = req.params;
   const { file } = req.body;
@@ -80,6 +131,8 @@ const updateAbout = async (req, res) => {
 
 module.exports = {
   getUser,
+  getSkills,
+  updateSkills,
   updateAvatar,
   updateAbout,
 };
