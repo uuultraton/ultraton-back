@@ -16,7 +16,7 @@ const {
 router.get('/:id', (req, res) => getUser(req, res));
 
 router.get('/:id/skills', (req, res) => getSkills(req, res));
-router.get('/:id/updateSkills', (req, res) => updateSkills(req, res));
+router.patch('/:id/updateSkills', (req, res) => updateSkills(req, res));
 
 router.patch('/:id/updateAbout', valid(userValid.aboutUpload), (req, res) =>
   updateAbout(req, res),
